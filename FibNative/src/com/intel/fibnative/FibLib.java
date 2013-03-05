@@ -10,5 +10,10 @@ public class FibLib {
 	}
 	
 	/** Native version */
+	
+	static {
+		System.loadLibrary("FibNative");
+	}
+	
 	public static native long fibN(long n);
 }
