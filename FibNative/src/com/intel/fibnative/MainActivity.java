@@ -21,7 +21,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		input = (EditText) findViewById(R.id.input);
 		buttonGo = (Button) findViewById(R.id.button_go);
 		output = (TextView) findViewById(R.id.output);
-		
+		 
 		buttonGo.setOnClickListener(this);
 	}
 
