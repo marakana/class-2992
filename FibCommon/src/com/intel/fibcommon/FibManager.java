@@ -40,6 +40,9 @@ public class FibManager {
 	// --- Proxy Calls ---
 	
 	public long fibJ(long n) {
+		if(fibService==null) {
+			return -1;
+		}
 		try {
 			return fibService.fibJ(n);
 		} catch (RemoteException e) {
@@ -49,6 +52,9 @@ public class FibManager {
 	}
 	
 	public long fibN(long n) {
+		if(fibService==null) {
+			return -1;
+		}
 		try {
 			return fibService.fibN(n);
 		} catch (RemoteException e) {

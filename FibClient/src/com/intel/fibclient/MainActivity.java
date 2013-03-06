@@ -2,7 +2,6 @@ package com.intel.fibclient;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
