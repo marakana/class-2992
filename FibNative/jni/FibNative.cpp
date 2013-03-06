@@ -13,7 +13,18 @@ long fib(long n) {
 
 /* JNI Wrapper */
 jlong fibN(JNIEnv *env, jclass clazz, jlong n) {
-	return (jlong) fib((jlong) n);
+
+	if (n < 0) {
+		jclass exception_clazz = env->FindClass(
+				"java/lang/IllegalArgumentException");
+		env->ThrowNew(exception_clazz, "n cannot be negative");
+	}
+
+	if (env->ExceptionCheck()) {
+		return -1;
+	} else {
+		return (jlong) fib((jlong) n);
+	}
 }
 
 /* Method table mapping Java calls to JNI */
@@ -29,8 +40,7 @@ extern "C" jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
 		return JNI_ERR;
 	} else {
-		jclass clazz = env->FindClass(
-				"com/intel/fibnative/FibLib");
+		jclass clazz = env->FindClass("com/intel/fibnative/FibLib");
 		if (clazz) {
 			jint ret = env->RegisterNatives(clazz, method_table,
 					sizeof(method_table) / sizeof(method_table[0]));
