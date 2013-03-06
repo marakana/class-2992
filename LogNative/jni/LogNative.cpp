@@ -12,6 +12,11 @@ void log(JNIEnv *env, jclass clazz, jint priority, jstring tag,
 		env->ThrowNew(iae, "Unsupported priority");
 	}
 
+	if (env->GetStringLength(tag)==0 || env->GetStringLength(message)==0) {
+		jclass iae = env->FindClass("java/lang/IllegalArgumentException");
+		env->ThrowNew(iae, "Tag and message cannot be empty");
+	}
+
 	// Assert tag and message are not empty
 	if (tag == 0 || message == 0) {
 		jclass npe = env->FindClass("java/lang/NullPointerException");
