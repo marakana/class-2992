@@ -68,4 +68,14 @@ public class LogManager {
 		}
 	}
 
+	public void asyncLog(LogMessage logMessage, LogListener listener) {
+		if (logService != null) {
+			try {
+				logService.asyncLog(logMessage, listener);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 }
