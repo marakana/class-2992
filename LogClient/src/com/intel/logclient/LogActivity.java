@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.intel.logcommon.LogManager;
+import com.intel.logcommon.LogMessage;
 
 public class LogActivity extends Activity implements OnClickListener {
 	private static final String TAG = "LogActivity";
@@ -82,7 +83,7 @@ public class LogActivity extends Activity implements OnClickListener {
 				logManager.logJ(priority, tag, msg);
 				break;
 			case R.id.type_log_n:
-				logManager.logN(priority, tag, msg);
+				logManager.log( new LogMessage(priority, tag, msg));
 				break;
 			default:
 				return;

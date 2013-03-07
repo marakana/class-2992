@@ -58,4 +58,14 @@ public class LogManager {
 		}
 	}
 
+	public void log(LogMessage logMessage) {
+		if (logService != null) {
+			try {
+				logService.log(logMessage);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

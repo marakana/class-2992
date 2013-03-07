@@ -3,6 +3,7 @@ package com.intel.logservice;
 import android.os.RemoteException;
 
 import com.intel.logcommon.ILogService;
+import com.intel.logcommon.LogMessage;
 
 public class ILogServiceImpl extends ILogService.Stub {
 
@@ -18,4 +19,9 @@ public class ILogServiceImpl extends ILogService.Stub {
 		LogLib.logJ(priority, tag, msg);
 	}
 
+	@Override
+	public void log(LogMessage logMessage) throws RemoteException {
+		logN(logMessage.getPriority(), logMessage.getTag(),
+				logMessage.getMessage());
+	}
 }
