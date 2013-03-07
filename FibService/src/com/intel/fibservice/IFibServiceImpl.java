@@ -2,6 +2,7 @@ package com.intel.fibservice;
 
 import android.os.RemoteException;
 
+import com.intel.fibcommon.FibListener;
 import com.intel.fibcommon.FibRequest;
 import com.intel.fibcommon.IFibService;
 
@@ -27,6 +28,15 @@ public class IFibServiceImpl extends IFibService.Stub {
 		default:
 			throw new IllegalArgumentException("Unsupported algorithm");
 		}
+	}
+
+	@Override
+	public void asyncFib(FibRequest request, FibListener listener)
+			throws RemoteException {
+		long time = System.currentTimeMillis();
+		long result = fib(request);
+		time = System.currentTimeMillis() - time;
+		listener.onResponse(result, time);
 	}
 
 }
