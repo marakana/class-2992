@@ -66,7 +66,7 @@ public class LogActivity extends Activity implements OnClickListener {
 											int id) {
 										LogActivity.this
 												.log(priority, tag, msg);
-									}
+										}
 								}).setNegativeButton(android.R.string.no, null)
 						.create().show();
 			} else {

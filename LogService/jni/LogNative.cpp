@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <android/log.h>
 
-namespace com_intel_logcommon {
+namespace com_intel_logservice {
 
 void log(JNIEnv *env, jclass clazz, jint priority, jstring tag,
 		jstring message) {
@@ -43,7 +43,7 @@ static JNINativeMethod method_table[] = { { "logN",
 
 }
 
-using namespace com_intel_logcommon;
+using namespace com_intel_logservice;
 
 /* Executes when System.loadLibrary() loads this library */
 extern "C" jint JNI_OnLoad(JavaVM* vm, void* reserved) {
